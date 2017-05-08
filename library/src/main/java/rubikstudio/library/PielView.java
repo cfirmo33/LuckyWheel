@@ -224,7 +224,8 @@ public class PielView extends View {
         }
         mTargetIndex = index;
         setRotation(0);
-        float targetAngle = 360 * mRoundOfNumber + 270 - getAngleOfIndexTarget() + (360 / mLuckyItemList.size()) / 2;
+//         float targetAngle = 360 * mRoundOfNumber + 270 - getAngleOfIndexTarget() + (360 / mLuckyItemList.size()) / 2; //Center pie
+        float targetAngle = 360 * mRoundOfNumber + 270 - getAngleOfIndexTarget() + doRandomPositionInPie();//Random position in pie
         animate()
                 .setInterpolator(new DecelerateInterpolator())
                 .setDuration(mRoundOfNumber * 1000 + 900L)
@@ -255,5 +256,18 @@ public class PielView extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
        return false;
+    }
+    
+    private int doRandomPositionInPie() {
+        int ret = 1;
+        int max = (360 / mLuckyItemList.size());
+        try {
+            Random r = new Random();
+            ret = r.nextInt(max - 1) + 0;
+        } catch (Exception e) {
+            //Log.e("", e.toString());
+        }
+
+        return ret;
     }
 }

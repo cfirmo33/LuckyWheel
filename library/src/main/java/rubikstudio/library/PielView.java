@@ -117,7 +117,7 @@ public class PielView extends View {
         init();
 
         float tmpAngle = mStartAngle;
-        float sweepAngle = 360 / mLuckyItemList.size();
+        float sweepAngle = (float) (1.0 * 360 / mLuckyItemList.size());
 
         for(int i = 0; i < mLuckyItemList.size(); i++) {
             mArcPaint.setColor(mLuckyItemList.get(i).color);
